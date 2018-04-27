@@ -5,10 +5,14 @@
  */
 package genericCheckpointing.server;
 
+import genericCheckpointing.util.SerializableObject;
+
 /**
  *
  * @author Megh Shah
  */
 public interface RestoreI {
+
+    public SerializableObject readObj(String xml);
     
 }

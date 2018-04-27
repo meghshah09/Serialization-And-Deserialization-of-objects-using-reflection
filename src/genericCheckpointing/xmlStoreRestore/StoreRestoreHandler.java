@@ -16,7 +16,14 @@ public class StoreRestoreHandler implements InvocationHandler{
 
     @Override
     public Object invoke(Object o, Method method, Object[] os) throws Throwable {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+         // if the method is write
+       // if the wireFormat is XML
+           //  call serializeData(args[0], new XMLSerializationStrategy());
+   
+    // if statements to check if it is the read method so that
+    // deserialization can be done ... 
+    return null;
     }
     
 }
