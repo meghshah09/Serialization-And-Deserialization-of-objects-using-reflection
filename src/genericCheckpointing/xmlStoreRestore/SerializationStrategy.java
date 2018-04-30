@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genericCheckpointing.server;
+package genericCheckpointing.xmlStoreRestore;
 
 import genericCheckpointing.util.SerializableObject;
 
@@ -11,8 +11,14 @@ import genericCheckpointing.util.SerializableObject;
  *
  * @author Megh Shah
  */
-public interface RestoreI extends StoreRestoreI{
+public class SerializationStrategy implements StrategyI{
 
-    public SerializableObject readObj(String xml);
+    public SerializationStrategy() {
+    }
+
+    @Override
+    public SerializableObject serializeObject(SerializableObject sIn) {
+        return null;
+    }
     
 }
