@@ -18,6 +18,15 @@ public class MyAllTypesFirst extends SerializableObject{
     private int myOtherInt;
     private long myOtherLong;
 
+    public MyAllTypesFirst(int myInt, long myLong, String myString, boolean myBoolean, int myOtherInt, long myOtherLong) {
+        this.myInt = myInt;
+        this.myLong = myLong;
+        this.myString = myString;
+        this.myBoolean = myBoolean;
+        this.myOtherInt = myOtherInt;
+        this.myOtherLong = myOtherLong;
+    }
+
     public int getMyInt() {
         return myInt;
     }

@@ -9,6 +9,7 @@ package genericCheckpointing.server;
  *
  * @author Megh Shah
  */
-public interface StoreRestoreI {
+public interface StoreRestoreI { 
+    //Empty Tag Interface
     
 }
