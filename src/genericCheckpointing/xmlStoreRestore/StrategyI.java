@@ -13,5 +13,5 @@ import genericCheckpointing.util.SerializableObject;
  */
 public interface StrategyI {
     
-    public SerializableObject serializeObject(SerializableObject sIn);
+    public void processInput(SerializableObject sIn);
 }

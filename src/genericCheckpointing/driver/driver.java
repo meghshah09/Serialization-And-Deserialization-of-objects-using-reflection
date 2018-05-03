@@ -12,6 +12,7 @@ import genericCheckpointing.util.CheckPointingHelper;
 import genericCheckpointing.util.MyAllTypesFirst;
 import genericCheckpointing.util.MyAllTypesSecond;
 import genericCheckpointing.util.ProxyCreator;
+import genericCheckpointing.util.Results;
 import genericCheckpointing.util.SerializableObject;
 import genericCheckpointing.xmlStoreRestore.StoreRestoreHandler;
 import java.util.Scanner;
@@ -40,13 +41,15 @@ public class driver {
             Scanner scan = new Scanner(System.in);
             
             ProxyCreator pc = new ProxyCreator();
-            
+            Results r = new Results();
+            r.openingOutputFile(fileName);
             // create an instance of StoreRestoreHandler (which implements
             // the InvocationHandler
             // create a proxy
-            StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(new Class[]{StoreI.class, RestoreI.class}, new StoreRestoreHandler());
-            CheckPointingHelper  helper = new CheckPointingHelper(cpointRef);
+            StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(new Class[]{StoreI.class, RestoreI.class}, new StoreRestoreHandler(r));
+            CheckPointingHelper  helper = new CheckPointingHelper(cpointRef,fileName);
             helper.createObjects(N,mode);
+            r.closeingOutputFile();
 
             //SerializableObject myRecordRet;
 

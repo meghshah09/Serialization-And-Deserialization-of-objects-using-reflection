@@ -17,8 +17,10 @@ public class DeSerializationStrategy implements StrategyI{
     }
 
     @Override
-    public SerializableObject serializeObject(SerializableObject sIn) {
-       return null;
+    public void processInput(SerializableObject sIn) {
+        
     }
+
+
     
 }

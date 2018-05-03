@@ -5,6 +5,7 @@
  */
 package genericCheckpointing.xmlStoreRestore;
 
+import genericCheckpointing.util.Results;
 import genericCheckpointing.util.SerializableObject;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -16,6 +17,12 @@ import java.lang.reflect.Method;
 public class StoreRestoreHandler implements InvocationHandler{
      private StrategyI serializationStrategy;
      private StrategyI deserializationStrategy;
+     private Results result;
+     
+     public StoreRestoreHandler(Results rIn){
+         result = rIn;
+     }
+    
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
           //args will contain the arguements of the interface method.
@@ -25,29 +32,33 @@ public class StoreRestoreHandler implements InvocationHandler{
            if(method.getName().equalsIgnoreCase("writeObj")){
                String str = args[2].toString();
                if(str.equalsIgnoreCase("XML")){
-                   serializationStrategy = new SerializationStrategy();
-                   return serializeData((SerializableObject) args[0],serializationStrategy);
+                   serializationStrategy = new SerializationStrategy(result);
+                   serializeData((SerializableObject) args[0],serializationStrategy);
                }
            }
            
            if(method.getName().equalsIgnoreCase("readObj")){
-              deserializationStrategy = new DeSerializationStrategy();
-               return deSerializeData((SerializableObject)args[0], deserializationStrategy);
+              String str = args[0].toString();
+               if(str.equalsIgnoreCase("XML")){
+                   deserializationStrategy = new DeSerializationStrategy();
+                   return deSerializeData(deserializationStrategy);
+               }
            }
    
     // if statements to check if it is the read method so that
     // deserialization can be done ... 
     return null;
     }
-
-    private Object deSerializeData(SerializableObject serializableObject, StrategyI deserializationStrategy) {
-        SerializableObject s = deserializationStrategy.serializeObject(serializableObject);
+    //does deSerialization.
+    private Object deSerializeData( StrategyI deserializationStrategy) {
+        SerializableObject s=null ;
+        deserializationStrategy.processInput(s);
         return (SerializableObject)s;
     }
-
-    private Object serializeData(SerializableObject serializableObject, StrategyI serializationStrategy) {
-       SerializableObject s = serializationStrategy.serializeObject(serializableObject);
-      return (SerializableObject)s;
+//Does serialization
+    private void serializeData(SerializableObject serializableObject, StrategyI serializationStrategy) {
+       serializationStrategy.processInput(serializableObject);
+      return;
     }
 
    

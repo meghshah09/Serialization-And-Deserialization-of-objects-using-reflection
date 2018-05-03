@@ -5,9 +5,12 @@
  */
 package genericCheckpointing.util;
 
+import genericCheckpointing.server.RestoreI;
 import genericCheckpointing.server.StoreI;
 import genericCheckpointing.server.StoreRestoreI;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
@@ -16,9 +19,10 @@ import java.util.Vector;
 public class CheckPointingHelper {
     
     private StoreRestoreI cPointRef;
-
-    public CheckPointingHelper(StoreRestoreI cpointRefIn){
+    private String fileName;
+    public CheckPointingHelper(StoreRestoreI cpointRefIn,String fileIn){
         cPointRef = cpointRefIn;
+        fileName= fileIn;
     }
     
     public void createObjects(int NUM_OF_OBJECTS, String modeIn){
@@ -29,7 +33,7 @@ public class CheckPointingHelper {
             // For "serdeser" mode, both the serialize and deserialize functionality should be called.
             // create a data structure to store the objects being serialized
             // NUM_OF_OBJECTS refers to the count for each of MyAllTypesFirst and MyAllTypesSecond
-            Vector<SerializableObject> serList = new Vector<SerializableObject>();
+            List<SerializableObject> serList = new ArrayList<SerializableObject>();
                     for (int i = 0; i < NUM_OF_OBJECTS; i++) {
                         int authID = ( int )( Math.random() * 9999 );
                         if( authID == 0 ) {
@@ -45,13 +49,20 @@ public class CheckPointingHelper {
                         ((StoreI) cPointRef).writeObj(myFirst,authID, "XML");
                         ((StoreI) cPointRef).writeObj(mySecond, authID,"XML");
                     }
-              Vector<SerializableObject> deserList = new Vector<SerializableObject>(); 
+              List<SerializableObject> deserList = new ArrayList<SerializableObject>(); 
               for (int j = 0; j < 2 * NUM_OF_OBJECTS; j++) {
-                    
+                    SerializableObject deSer= (SerializableObject)((RestoreI) cPointRef).readObj("XML");
+                    deserList.add(deSer);
                 }
             }
-            // Use an if/switch to proceed according to the command line argument
+            else if (modeIn.equalsIgnoreCase("deser")){
+             // Use an if/switch to proceed according to the command line argument
             // For deser, just deserliaze the input file into the data structure and then print the objects
+            
+            
+                    
+            }
+            
             
     }
 }
