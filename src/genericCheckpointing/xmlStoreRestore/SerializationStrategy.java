@@ -5,6 +5,7 @@
  */
 package genericCheckpointing.xmlStoreRestore;
 
+import genericCheckpointing.util.FileProcessor;
 import genericCheckpointing.util.Results;
 import genericCheckpointing.util.SerializableObject;
 import java.lang.reflect.Field;
@@ -18,7 +19,7 @@ import java.util.logging.Logger;
  * @author Megh Shah
  */
 public class SerializationStrategy implements StrategyI{
-        //private Map<String,String> types= new HashMap<>();
+       // private Map<String,String> types= new HashMap<>();
         private StringBuilder sb = new StringBuilder();
         private Results result;
         public SerializationStrategy(Results rIn){
@@ -26,18 +27,19 @@ public class SerializationStrategy implements StrategyI{
         }
     @Override
     public void processInput(SerializableObject sIn) {
-        
+       
         try{
         Class<?> cls = sIn.getClass();
        // System.out.println(cls); //both class will come.
         sb.append("<DPSerialization>\n");
-        sb.append(" <complexType xsi:type="+cls.getName()+">\n");
+        sb.append(" <complexType xsi:type=\""+cls.getName()+"\">\n");
         Field[] field = cls.getDeclaredFields();
         for(Field f : field){
             f.setAccessible(true);
             Object value = f.get(sIn);
             
-            sb.append("  <"+f.getName()+" xsi:type=\"xsd:"+f.getType().toString()+"\">"+value.toString()+"</"+f.getName()+">\n");
+            String type = f.getType().getName();
+             sb.append("  <"+f.getName()+" xsi:type=\"xsd:"+type+"\">"+value.toString()+"</"+f.getName()+">\n");
             
         }
             
@@ -49,7 +51,12 @@ public class SerializationStrategy implements StrategyI{
         catch(Exception e){
             e.printStackTrace();
         }
+        
     }
 
+    @Override
+    public SerializableObject processInput(FileProcessor fp) {
+        return null;
+    }
     
 }

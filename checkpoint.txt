@@ -1,8 +1,8 @@
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">1</myInt>
   <myLong xsi:type="xsd:long">0</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object0</myString>
+  <myString xsi:type="xsd:java.lang.String">object0</myString>
   <myBoolean xsi:type="xsd:boolean">true</myBoolean>
   <myOtherInt xsi:type="xsd:int">2</myOtherInt>
   <myOtherLong xsi:type="xsd:long">0</myOtherLong>
@@ -10,7 +10,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">0.0</myDoubleT>
   <myFloatT xsi:type="xsd:float">3.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -20,10 +20,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">2</myInt>
   <myLong xsi:type="xsd:long">99999</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object1</myString>
+  <myString xsi:type="xsd:java.lang.String">object1</myString>
   <myBoolean xsi:type="xsd:boolean">false</myBoolean>
   <myOtherInt xsi:type="xsd:int">3</myOtherInt>
   <myOtherLong xsi:type="xsd:long">999999</myOtherLong>
@@ -31,7 +31,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">2.55556</myDoubleT>
   <myFloatT xsi:type="xsd:float">4.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -41,10 +41,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">3</myInt>
   <myLong xsi:type="xsd:long">199998</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object2</myString>
+  <myString xsi:type="xsd:java.lang.String">object2</myString>
   <myBoolean xsi:type="xsd:boolean">true</myBoolean>
   <myOtherInt xsi:type="xsd:int">4</myOtherInt>
   <myOtherLong xsi:type="xsd:long">1999998</myOtherLong>
@@ -52,7 +52,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">5.11112</myDoubleT>
   <myFloatT xsi:type="xsd:float">5.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -62,10 +62,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">4</myInt>
   <myLong xsi:type="xsd:long">299997</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object3</myString>
+  <myString xsi:type="xsd:java.lang.String">object3</myString>
   <myBoolean xsi:type="xsd:boolean">false</myBoolean>
   <myOtherInt xsi:type="xsd:int">5</myOtherInt>
   <myOtherLong xsi:type="xsd:long">2999997</myOtherLong>
@@ -73,7 +73,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">7.6666799999999995</myDoubleT>
   <myFloatT xsi:type="xsd:float">6.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -83,10 +83,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">5</myInt>
   <myLong xsi:type="xsd:long">399996</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object4</myString>
+  <myString xsi:type="xsd:java.lang.String">object4</myString>
   <myBoolean xsi:type="xsd:boolean">true</myBoolean>
   <myOtherInt xsi:type="xsd:int">6</myOtherInt>
   <myOtherLong xsi:type="xsd:long">3999996</myOtherLong>
@@ -94,7 +94,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">10.22224</myDoubleT>
   <myFloatT xsi:type="xsd:float">7.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -104,10 +104,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">6</myInt>
   <myLong xsi:type="xsd:long">499995</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object5</myString>
+  <myString xsi:type="xsd:java.lang.String">object5</myString>
   <myBoolean xsi:type="xsd:boolean">false</myBoolean>
   <myOtherInt xsi:type="xsd:int">7</myOtherInt>
   <myOtherLong xsi:type="xsd:long">4999995</myOtherLong>
@@ -115,7 +115,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">12.7778</myDoubleT>
   <myFloatT xsi:type="xsd:float">8.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -125,10 +125,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">7</myInt>
   <myLong xsi:type="xsd:long">599994</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object6</myString>
+  <myString xsi:type="xsd:java.lang.String">object6</myString>
   <myBoolean xsi:type="xsd:boolean">true</myBoolean>
   <myOtherInt xsi:type="xsd:int">8</myOtherInt>
   <myOtherLong xsi:type="xsd:long">5999994</myOtherLong>
@@ -136,7 +136,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">15.333359999999999</myDoubleT>
   <myFloatT xsi:type="xsd:float">9.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -146,10 +146,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">8</myInt>
   <myLong xsi:type="xsd:long">699993</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object7</myString>
+  <myString xsi:type="xsd:java.lang.String">object7</myString>
   <myBoolean xsi:type="xsd:boolean">false</myBoolean>
   <myOtherInt xsi:type="xsd:int">9</myOtherInt>
   <myOtherLong xsi:type="xsd:long">6999993</myOtherLong>
@@ -157,7 +157,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">17.88892</myDoubleT>
   <myFloatT xsi:type="xsd:float">10.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -167,10 +167,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">9</myInt>
   <myLong xsi:type="xsd:long">799992</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object8</myString>
+  <myString xsi:type="xsd:java.lang.String">object8</myString>
   <myBoolean xsi:type="xsd:boolean">true</myBoolean>
   <myOtherInt xsi:type="xsd:int">10</myOtherInt>
   <myOtherLong xsi:type="xsd:long">7999992</myOtherLong>
@@ -178,7 +178,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">20.44448</myDoubleT>
   <myFloatT xsi:type="xsd:float">11.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>
@@ -188,10 +188,10 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesFirst>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesFirst">
   <myInt xsi:type="xsd:int">10</myInt>
   <myLong xsi:type="xsd:long">899991</myLong>
-  <myString xsi:type="xsd:class java.lang.String">object9</myString>
+  <myString xsi:type="xsd:java.lang.String">object9</myString>
   <myBoolean xsi:type="xsd:boolean">false</myBoolean>
   <myOtherInt xsi:type="xsd:int">11</myOtherInt>
   <myOtherLong xsi:type="xsd:long">8999991</myOtherLong>
@@ -199,7 +199,7 @@
 </DPSerialization>
 
 <DPSerialization>
- <complexType xsi:type=genericCheckpointing.util.MyAllTypesSecond>
+ <complexType xsi:type="genericCheckpointing.util.MyAllTypesSecond">
   <myDoubleT xsi:type="xsd:double">23.00004</myDoubleT>
   <myFloatT xsi:type="xsd:float">12.5</myFloatT>
   <myCharT xsi:type="xsd:char">#</myCharT>

@@ -9,6 +9,7 @@ import genericCheckpointing.server.RestoreI;
 import genericCheckpointing.server.StoreI;
 import genericCheckpointing.server.StoreRestoreI;
 import genericCheckpointing.util.CheckPointingHelper;
+import genericCheckpointing.util.FileProcessor;
 import genericCheckpointing.util.MyAllTypesFirst;
 import genericCheckpointing.util.MyAllTypesSecond;
 import genericCheckpointing.util.ProxyCreator;
@@ -39,17 +40,18 @@ public class driver {
             String mode = args[0];
             String fileName = args[2]; 
             Scanner scan = new Scanner(System.in);
-            
+            FileProcessor fp = new FileProcessor();
+            fp.setFileName(fileName);
+            fp.setCount(0);
             ProxyCreator pc = new ProxyCreator();
             Results r = new Results();
             r.openingOutputFile(fileName);
             // create an instance of StoreRestoreHandler (which implements
             // the InvocationHandler
             // create a proxy
-            StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(new Class[]{StoreI.class, RestoreI.class}, new StoreRestoreHandler(r));
-            CheckPointingHelper  helper = new CheckPointingHelper(cpointRef,fileName);
+            StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(new Class[]{StoreI.class, RestoreI.class}, new StoreRestoreHandler(r,fp));
+            CheckPointingHelper  helper = new CheckPointingHelper(cpointRef,fileName,r);
             helper.createObjects(N,mode);
-            r.closeingOutputFile();
 
             //SerializableObject myRecordRet;
 

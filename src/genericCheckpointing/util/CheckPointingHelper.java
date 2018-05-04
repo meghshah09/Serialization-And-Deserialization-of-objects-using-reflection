@@ -20,9 +20,11 @@ public class CheckPointingHelper {
     
     private StoreRestoreI cPointRef;
     private String fileName;
-    public CheckPointingHelper(StoreRestoreI cpointRefIn,String fileIn){
+    private Results result;
+    public CheckPointingHelper(StoreRestoreI cpointRefIn,String fileIn,Results rIn){
         cPointRef = cpointRefIn;
         fileName= fileIn;
+        result=rIn;
     }
     
     public void createObjects(int NUM_OF_OBJECTS, String modeIn){
@@ -49,6 +51,7 @@ public class CheckPointingHelper {
                         ((StoreI) cPointRef).writeObj(myFirst,authID, "XML");
                         ((StoreI) cPointRef).writeObj(mySecond, authID,"XML");
                     }
+                    result.closeingOutputFile();
               List<SerializableObject> deserList = new ArrayList<SerializableObject>(); 
               for (int j = 0; j < 2 * NUM_OF_OBJECTS; j++) {
                     SerializableObject deSer= (SerializableObject)((RestoreI) cPointRef).readObj("XML");

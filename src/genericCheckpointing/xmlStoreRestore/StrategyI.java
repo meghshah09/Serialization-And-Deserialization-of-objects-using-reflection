@@ -5,6 +5,7 @@
  */
 package genericCheckpointing.xmlStoreRestore;
 
+import genericCheckpointing.util.FileProcessor;
 import genericCheckpointing.util.SerializableObject;
 
 /**
@@ -14,4 +15,6 @@ import genericCheckpointing.util.SerializableObject;
 public interface StrategyI {
     
     public void processInput(SerializableObject sIn);
+
+    public SerializableObject processInput(FileProcessor fp);
 }

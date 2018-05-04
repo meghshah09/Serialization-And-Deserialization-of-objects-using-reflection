@@ -8,6 +8,7 @@ package genericCheckpointing.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -22,6 +23,10 @@ public class FileProcessor {
     private final List<String> fileData = new ArrayList<>();
     private File file;
     private int count;
+
+    public FileProcessor() {
+        
+    }
 
     /**
      * 
@@ -108,6 +113,7 @@ public class FileProcessor {
        }
        finally{
        }
+        fileData.removeAll(Arrays.asList("", null));
        }
         //sends the string 
         String line= null;

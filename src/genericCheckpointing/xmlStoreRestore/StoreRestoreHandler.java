@@ -5,6 +5,7 @@
  */
 package genericCheckpointing.xmlStoreRestore;
 
+import genericCheckpointing.util.FileProcessor;
 import genericCheckpointing.util.Results;
 import genericCheckpointing.util.SerializableObject;
 import java.lang.reflect.InvocationHandler;
@@ -18,9 +19,10 @@ public class StoreRestoreHandler implements InvocationHandler{
      private StrategyI serializationStrategy;
      private StrategyI deserializationStrategy;
      private Results result;
-     
-     public StoreRestoreHandler(Results rIn){
+     private FileProcessor file;
+     public StoreRestoreHandler(Results rIn,FileProcessor fIn){
          result = rIn;
+         file = fIn;
      }
     
     @Override
@@ -52,7 +54,7 @@ public class StoreRestoreHandler implements InvocationHandler{
     //does deSerialization.
     private Object deSerializeData( StrategyI deserializationStrategy) {
         SerializableObject s=null ;
-        deserializationStrategy.processInput(s);
+        s = deserializationStrategy.processInput(file);
         return (SerializableObject)s;
     }
 //Does serialization
