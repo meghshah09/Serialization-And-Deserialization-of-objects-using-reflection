@@ -52,11 +52,20 @@ public class CheckPointingHelper {
                         ((StoreI) cPointRef).writeObj(mySecond, authID,"XML");
                     }
                     result.closeingOutputFile();
-              List<SerializableObject> deserList = new ArrayList<SerializableObject>(); 
+              List<SerializableObject> deserList = new ArrayList<>(); 
               for (int j = 0; j < 2 * NUM_OF_OBJECTS; j++) {
                     SerializableObject deSer= (SerializableObject)((RestoreI) cPointRef).readObj("XML");
                     deserList.add(deSer);
                 }
+              int misMatch=0;
+              for(int i =0; i<serList.size();i++){
+                  if(serList.get(i).equals(deserList.get(i)) ){
+                  }else{
+                      misMatch++;
+                  }
+              }
+              System.out.println("No. of Mis Match are :" +misMatch);
+              
             }
             else if (modeIn.equalsIgnoreCase("deser")){
              // Use an if/switch to proceed according to the command line argument

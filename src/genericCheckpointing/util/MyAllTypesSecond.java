@@ -17,6 +17,9 @@ public class MyAllTypesSecond extends SerializableObject{
     private short myShortT;
     private double myOtherDoubleT;
 
+    public MyAllTypesSecond() {
+    }
+
     public MyAllTypesSecond(double myDoubleT, float myFloatT, char myCharT, short myShortT, double myOtherDoubleT) {
         this.myDoubleT = myDoubleT;
         this.myFloatT = myFloatT;
@@ -65,4 +68,44 @@ public class MyAllTypesSecond extends SerializableObject{
         this.myOtherDoubleT = myOtherDoubleT;
     }
     
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MyAllTypesSecond other = (MyAllTypesSecond) obj;
+        if (Double.doubleToLongBits(this.myDoubleT) != Double.doubleToLongBits(other.myDoubleT)) {
+            return false;
+        }
+        if (Float.floatToIntBits(this.myFloatT) != Float.floatToIntBits(other.myFloatT)) {
+            return false;
+        }
+        if (this.myCharT != other.myCharT) {
+            return false;
+        }
+        if (this.myShortT != other.myShortT) {
+            return false;
+        }
+        if (Double.doubleToLongBits(this.myOtherDoubleT) != Double.doubleToLongBits(other.myOtherDoubleT)) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.myDoubleT) ^ (Double.doubleToLongBits(this.myDoubleT) >>> 32));
+        hash = 97 * hash + Float.floatToIntBits(this.myFloatT);
+        hash = 97 * hash + this.myCharT;
+        hash = 97 * hash + this.myShortT;
+        hash = 97 * hash + (int) (Double.doubleToLongBits(this.myOtherDoubleT) ^ (Double.doubleToLongBits(this.myOtherDoubleT) >>> 32));
+        return hash;
+    }
 }

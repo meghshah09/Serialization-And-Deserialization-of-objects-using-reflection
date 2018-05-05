@@ -5,6 +5,8 @@
  */
 package genericCheckpointing.util;
 
+import java.util.Objects;
+
 /**
  *
  * @author Megh Shah
@@ -17,6 +19,9 @@ public class MyAllTypesFirst extends SerializableObject{
     private boolean myBoolean;
     private int myOtherInt;
     private long myOtherLong;
+
+    public MyAllTypesFirst() {
+    }
 
     public MyAllTypesFirst(int myInt, long myLong, String myString, boolean myBoolean, int myOtherInt, long myOtherLong) {
         this.myInt = myInt;
@@ -75,8 +80,50 @@ public class MyAllTypesFirst extends SerializableObject{
         this.myOtherLong = myOtherLong;
     }
 
-    
-    
-    
-    
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 71 * hash + this.myInt;
+        hash = 71 * hash + (int) (this.myLong ^ (this.myLong >>> 32));
+        hash = 71 * hash + Objects.hashCode(this.myString);
+        hash = 71 * hash + (this.myBoolean ? 1 : 0);
+        hash = 71 * hash + this.myOtherInt;
+        hash = 71 * hash + (int) (this.myOtherLong ^ (this.myOtherLong >>> 32));
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MyAllTypesFirst other = (MyAllTypesFirst) obj;
+        if (this.myInt != other.myInt) {
+            return false;
+        }
+        if (this.myLong != other.myLong) {
+            return false;
+        }
+        if (this.myBoolean != other.myBoolean) {
+            return false;
+        }
+        if (this.myOtherInt != other.myOtherInt) {
+            return false;
+        }
+        if (this.myOtherLong != other.myOtherLong) {
+            return false;
+        }
+        if (!Objects.equals(this.myString, other.myString)) {
+            return false;
+        }
+        return true;
+    }
+
+
 }
