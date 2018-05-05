@@ -31,6 +31,7 @@ public class CheckPointingHelper {
         // FIXME: invoke a method on the handler instance to set the file name for checkpointFile and open the file
             
             if(modeIn.equalsIgnoreCase("serdeser")){
+                result.openingOutputFile(fileName);
                 // The code below is for "serdeser" mode
             // For "serdeser" mode, both the serialize and deserialize functionality should be called.
             // create a data structure to store the objects being serialized
@@ -70,7 +71,14 @@ public class CheckPointingHelper {
             else if (modeIn.equalsIgnoreCase("deser")){
              // Use an if/switch to proceed according to the command line argument
             // For deser, just deserliaze the input file into the data structure and then print the objects
-            
+            List<SerializableObject> deserList = new ArrayList<>(); 
+              for (int j = 0; j < 2 * NUM_OF_OBJECTS; j++) {
+                    SerializableObject deSer= (SerializableObject)((RestoreI) cPointRef).readObj("XML");
+                    deserList.add(deSer);
+                }
+              for (int j = 0; j < 2 * NUM_OF_OBJECTS; j++) {
+                  result.stdoutDisplay(deserList.get(j).toString());
+                }
             
                     
             }

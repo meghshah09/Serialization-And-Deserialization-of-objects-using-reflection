@@ -13,12 +13,12 @@ import java.util.Objects;
  */
 public class MyAllTypesFirst extends SerializableObject{
     
-    private int myInt;
-    private long myLong;
-    private String myString;
-    private boolean myBoolean;
-    private int myOtherInt;
-    private long myOtherLong;
+    private int myInt=0 ;
+    private long myLong= 0;
+    private String myString= null ;
+    private boolean myBoolean= true;
+    private int myOtherInt = 0;
+    private long myOtherLong = 0;
 
     public MyAllTypesFirst() {
     }
@@ -119,9 +119,7 @@ public class MyAllTypesFirst extends SerializableObject{
         if (this.myOtherLong != other.myOtherLong) {
             return false;
         }
-        if (!Objects.equals(this.myString, other.myString)) {
-            return false;
-        }
+
         return true;
     }
 

@@ -11,11 +11,11 @@ package genericCheckpointing.util;
  */
 public class MyAllTypesSecond extends SerializableObject{
     
-    private double myDoubleT;
-    private float myFloatT;
-    private char myCharT;
-    private short myShortT;
-    private double myOtherDoubleT;
+    private double myDoubleT=0;
+    private float myFloatT=0;
+    private char myCharT=0;
+    private short myShortT=0;
+    private double myOtherDoubleT=0;
 
     public MyAllTypesSecond() {
     }

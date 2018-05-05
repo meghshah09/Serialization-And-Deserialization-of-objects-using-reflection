@@ -39,14 +39,15 @@ public class SerializationStrategy implements StrategyI{
             Object value = f.get(sIn);
             
             String type = f.getType().getName();
-             sb.append("  <"+f.getName()+" xsi:type=\"xsd:"+type+"\">"+value.toString()+"</"+f.getName()+">\n");
+            if(serializeType(type,value.toString()))
+                 sb.append("  <"+f.getName()+" xsi:type=\"xsd:"+type+"\">"+value.toString()+"</"+f.getName()+">\n");
             
         }
             
         sb.append(" </complexType>\n");
         sb.append("</DPSerialization>\n");
         result.fileDisplay(sb.toString());
-        result.stdoutDisplay(sb.toString());
+        //result.stdoutDisplay(sb.toString());
         }
         catch(Exception e){
             e.printStackTrace();
@@ -57,6 +58,26 @@ public class SerializationStrategy implements StrategyI{
     @Override
     public SerializableObject processInput(FileProcessor fp) {
         return null;
+    }
+
+    private boolean serializeType(String type, String val) {
+        if(type.equalsIgnoreCase("int") && (Integer.parseInt(val) <10)){
+            return false;
+        }
+        else if(type.equalsIgnoreCase("long") && (Long.parseLong(val) <10)){
+            return false;
+        }
+        else if(type.equalsIgnoreCase("double") && (Double.parseDouble(val) <10)){
+            return false;
+        }
+        else if(type.equalsIgnoreCase("float") && (Float.parseFloat(val) <10)){
+            return false;
+        }
+        else if(type.equalsIgnoreCase("short") && (Short.parseShort(val) <10)){
+            return false;
+        }
+        return true;
+        
     }
     
 }

@@ -45,7 +45,7 @@ public class driver {
             fp.setCount(0);
             ProxyCreator pc = new ProxyCreator();
             Results r = new Results();
-            r.openingOutputFile(fileName);
+           // r.openingOutputFile(fileName);
             // create an instance of StoreRestoreHandler (which implements
             // the InvocationHandler
             // create a proxy
