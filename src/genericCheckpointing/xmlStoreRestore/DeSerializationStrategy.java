@@ -7,16 +7,12 @@ package genericCheckpointing.xmlStoreRestore;
 
 import genericCheckpointing.util.FileProcessor;
 import genericCheckpointing.util.SerializableObject;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,13 +22,11 @@ import java.util.regex.Pattern;
  */
 public class DeSerializationStrategy implements StrategyI{
 
-    private  int countInt=0;
-    private  int countLong =0;
-    private  int countDouble=0;
+
     private String fileName;
     private Map<String,Class<?>> map = new HashMap<>();
     public DeSerializationStrategy() {
-        map.put("String",String.class);
+        map.put("java.lang.String",String.class);
         map.put("int",Integer.TYPE);
         map.put("float",Float.TYPE);
         map.put("boolean",Boolean.TYPE);
@@ -40,6 +34,7 @@ public class DeSerializationStrategy implements StrategyI{
         map.put("char",Character.TYPE);
         map.put("short",Short.TYPE);
         map.put("long",Long.TYPE);
+        map.put("String",String.class);
     }
 
     @Override
@@ -100,33 +95,12 @@ public class DeSerializationStrategy implements StrategyI{
                         //System.out.println(m.group(4)); //NA
                        value = m.group(1);
                     }
-                    deSerializeType(type,value,obj1,cls);
+                    deSerializeType(type,value,obj1,cls,fieldName);
                 }
                 line= fp.readLine();
         }
         //[Ref:https://stackoverflow.com/questions/6094575/creating-an-instance-using-the-class-name-and-calling-constructor]
-        
-            
-           //Object args[] = new Object[paramList.size()];
-            
-           
             return (SerializableObject)obj1;
-            /*for(Constructor<?> constructor : cls.getConstructors()){
-                Class<?>[] types = constructor.getParameterTypes();
-                if(types.length == 0){ //empty constructor
-                    
-                }
-                
-                if(paramList.size() != types.length){ //parameters in constructor should match
-                    continue;
-                }
-                Object args[] = new Object[types.length];
-                for(int i =0; i<types.length;i++){
-                    args[i] = typeParser(paramList.get(i),types[i]) ;
-                }
-                return (SerializableObject) constructor.newInstance(args);
-            }*/
-            
         } catch (ClassNotFoundException | ArrayIndexOutOfBoundsException |InstantiationException | IllegalAccessException | IllegalArgumentException ex) {
             ex.printStackTrace();
         } 
@@ -134,16 +108,16 @@ public class DeSerializationStrategy implements StrategyI{
         return obj;
     }
 
-    private void deSerializeType(String type,String arg,Object obj1,Class<?>cls) {
+    private void deSerializeType(String type,String arg,Object obj1,Class<?>cls,String fName) {
         Class<?>types = findType(type);
         try {
         if(types == Integer.TYPE ||types == Integer.class){
             
-                if(countInt==0){
+                if(fName.equalsIgnoreCase("myInt")){
                     Method m = cls.getMethod("setMyInt", types);
                      
                 m.invoke(obj1,Integer.parseInt(arg));
-                countInt++;
+               
                 }else{
                     Method m = cls.getMethod("setMyOtherInt", types);
                     
@@ -151,11 +125,11 @@ public class DeSerializationStrategy implements StrategyI{
                 }
         }
         else if(types == Long.TYPE || types== Long.class){
-            if(countLong==0){
+            if(fName.equalsIgnoreCase("myLong")){
                 
                     Method m = cls.getMethod("setMyLong", types);
                     m.invoke(obj1,Long.parseLong(arg));
-                    countLong++;
+                    //countLong++;
             }else{
                     Method m = cls.getMethod("setMyOtherLong", types);
                      m.invoke(obj1,Long.parseLong(arg));
@@ -163,10 +137,10 @@ public class DeSerializationStrategy implements StrategyI{
          
           }
         else if(types==Double.TYPE || types == Double.class){
-            if(countDouble == 0){
+            if(fName.equalsIgnoreCase("myDoubleT")){
                 Method m =cls.getMethod("setMyDoubleT", types);
                 m.invoke(obj1,Double.parseDouble(arg));
-                countDouble++;
+               // countDouble++;
             }else{
                 Method m =cls.getMethod("setMyOtherDoubleT", types);
                 m.invoke(obj1,Double.parseDouble(arg));
@@ -189,7 +163,7 @@ public class DeSerializationStrategy implements StrategyI{
             Method m = cls.getDeclaredMethod("setMyShortT", types);
             m.invoke(obj1,Short.parseShort(arg));
         }
-        else if(types == String.class){
+        else if(types == String.class  || types == Object.class){
             Method m = cls.getDeclaredMethod("setMyString", types);
             m.invoke(obj1,arg);
         }

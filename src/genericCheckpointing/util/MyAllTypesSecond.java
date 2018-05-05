@@ -108,4 +108,10 @@ public class MyAllTypesSecond extends SerializableObject{
         hash = 97 * hash + (int) (Double.doubleToLongBits(this.myOtherDoubleT) ^ (Double.doubleToLongBits(this.myOtherDoubleT) >>> 32));
         return hash;
     }
+    
+    @Override
+     public String toString(){
+       String str = "MyAllTypesSecond  \n{ myCharT :"+this.myCharT+", myDoubleT : "+this.myDoubleT+", myFloatT : "+this.myFloatT+", myOtherDoubleT : "+this.myOtherDoubleT+", myShortT : "+this.myShortT+" }";
+       return str;
+    }
 }

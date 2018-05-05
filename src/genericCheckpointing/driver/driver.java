@@ -34,7 +34,7 @@ public class driver {
             System.out.println("            CheckPointing Objects             ");
             System.out.println("================================================");
             System.out.println("");
-            System.out.println("Starting the Process......");
+            System.out.println("Starting the Process with given "+args[2]+" file......");
             System.out.println("");
             int N = Integer.parseInt(args[1]);
             String mode = args[0];
@@ -52,20 +52,6 @@ public class driver {
             StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(new Class[]{StoreI.class, RestoreI.class}, new StoreRestoreHandler(r,fp));
             CheckPointingHelper  helper = new CheckPointingHelper(cpointRef,fileName,r);
             helper.createObjects(N,mode);
-
-            //SerializableObject myRecordRet;
-
-            // create a data structure to store the returned ojects
-            //for (int j = 0; j < 2 * NUM_OF_OBJECTS; j++) {
-
-                //myRecordRet = ((RestoreI) cpointRef).readObj("XML");
-                // FIXME: store myRecordRet in the vector
-            //}
-
-            // FIXME: invoke a method on the handler to close the file (if it hasn't already been closed)
-            // FIXME: compare and confirm that the serialized and deserialzed objects are equal. 
-            // The comparison should use the equals and hashCode methods. Note that hashCode 
-            // is used for key-value based data structures
         }
         else{
             

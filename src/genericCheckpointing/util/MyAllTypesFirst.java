@@ -13,12 +13,12 @@ import java.util.Objects;
  */
 public class MyAllTypesFirst extends SerializableObject{
     
-    private int myInt=0 ;
-    private long myLong= 0;
-    private String myString= null ;
-    private boolean myBoolean= true;
-    private int myOtherInt = 0;
-    private long myOtherLong = 0;
+    private int myInt;
+    private long myLong;
+    private String myString ;
+    private boolean myBoolean;
+    private int myOtherInt;
+    private long myOtherLong ;
 
     public MyAllTypesFirst() {
     }
@@ -123,5 +123,10 @@ public class MyAllTypesFirst extends SerializableObject{
         return true;
     }
 
+    @Override
+    public String toString(){
+       String str = "MyAllTypesFirst \n{ myInt :"+this.myInt+", myString : "+this.myString+", myBoolean : "+this.myBoolean+", myLong : "+this.myLong+", myOtherLong : "+this.myOtherLong+", myOtherInt : "+this.myOtherInt+" }";
+       return str;
+    }
 
 }
