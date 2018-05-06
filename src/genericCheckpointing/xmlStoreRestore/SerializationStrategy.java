@@ -9,10 +9,6 @@ import genericCheckpointing.util.FileProcessor;
 import genericCheckpointing.util.Results;
 import genericCheckpointing.util.SerializableObject;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -71,9 +67,6 @@ public class SerializationStrategy implements StrategyI{
             return false;
         }
         else if(type.equalsIgnoreCase("float") && (Float.parseFloat(val) <10)){
-            return false;
-        }
-        else if(type.equalsIgnoreCase("short") && (Short.parseShort(val) <10)){
             return false;
         }
         return true;

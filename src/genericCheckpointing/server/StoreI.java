@@ -13,6 +13,20 @@ import genericCheckpointing.util.MyAllTypesSecond;
  * @author Megh Shah
  */
 public interface StoreI extends StoreRestoreI {
-      void writeObj(MyAllTypesFirst aRecord, int authID, String wireFormat);
-      void writeObj(MyAllTypesSecond bRecord, int authID, String wireFormat);
+
+    /**
+     *
+     * @param aRecord
+     * @param authID
+     * @param wireFormat
+     */
+    void writeObj(MyAllTypesFirst aRecord, int authID, String wireFormat);
+
+    /**
+     *
+     * @param bRecord
+     * @param authID
+     * @param wireFormat
+     */
+    void writeObj(MyAllTypesSecond bRecord, int authID, String wireFormat);
 }

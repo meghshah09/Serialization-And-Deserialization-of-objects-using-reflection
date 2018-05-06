@@ -10,11 +10,8 @@ import genericCheckpointing.server.StoreI;
 import genericCheckpointing.server.StoreRestoreI;
 import genericCheckpointing.util.CheckPointingHelper;
 import genericCheckpointing.util.FileProcessor;
-import genericCheckpointing.util.MyAllTypesFirst;
-import genericCheckpointing.util.MyAllTypesSecond;
 import genericCheckpointing.util.ProxyCreator;
 import genericCheckpointing.util.Results;
-import genericCheckpointing.util.SerializableObject;
 import genericCheckpointing.xmlStoreRestore.StoreRestoreHandler;
 import java.util.Scanner;
 
@@ -36,11 +33,12 @@ public class driver {
             System.out.println("");
             System.out.println("Starting the Process with given "+args[2]+" file......");
             System.out.println("");
+            try{
             int N = Integer.parseInt(args[1]);
             String mode = args[0];
             String fileName = args[2]; 
             Scanner scan = new Scanner(System.in);
-            FileProcessor fp = new FileProcessor();
+            FileProcessor fp = new FileProcessor(scan);
             fp.setFileName(fileName);
             fp.setCount(0);
             ProxyCreator pc = new ProxyCreator();
@@ -51,7 +49,13 @@ public class driver {
             // create a proxy
             StoreRestoreI cpointRef = (StoreRestoreI) pc.createProxy(new Class[]{StoreI.class, RestoreI.class}, new StoreRestoreHandler(r,fp));
             CheckPointingHelper  helper = new CheckPointingHelper(cpointRef,fileName,r);
-            helper.createObjects(N,mode);
+            helper.createObjects(N,mode); // does all the Job
+            }
+            catch(NumberFormatException e){
+                System.err.println("Second Arguement Should be int");
+                System.exit(0);
+            }
+            
         }
         else{
             

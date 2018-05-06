@@ -21,12 +21,22 @@ public class CheckPointingHelper {
     private StoreRestoreI cPointRef;
     private String fileName;
     private Results result;
+    /**
+     * Parameterized Constructor
+     * @param cpointRefIn
+     * @param fileIn
+     * @param rIn 
+     */
     public CheckPointingHelper(StoreRestoreI cpointRefIn,String fileIn,Results rIn){
         cPointRef = cpointRefIn;
         fileName= fileIn;
         result=rIn;
     }
-    
+    /**
+     * 
+     * @param NUM_OF_OBJECTS is the Number of Objects given from the Command Line
+     * @param modeIn is The Mode in Which checkpointing objects will work
+     */
     public void createObjects(int NUM_OF_OBJECTS, String modeIn){
         // FIXME: invoke a method on the handler instance to set the file name for checkpointFile and open the file
             
@@ -44,8 +54,9 @@ public class CheckPointingHelper {
                         }
                         // FIXME: create these object instances correctly using an explicit value constructor
                         // use the index variable of this loop to change the values of the arguments to these constructors
-                        MyAllTypesFirst myFirst = new MyAllTypesFirst(i+1,i*99999,"object"+i,((i%2)==0),i+2,i*999999);
-                        MyAllTypesSecond mySecond = new MyAllTypesSecond(i*2.55556,i+3.5f,'#',(short)i,i*3.67777778);
+                        double ran = Math.random(); // generate random number
+                        MyAllTypesFirst myFirst = new MyAllTypesFirst((i*(int)ran)+1,(i*(long)ran+i),"object"+i,((i%2)==0),i+2,i*999999);
+                        MyAllTypesSecond mySecond = new MyAllTypesSecond((i/2.55556)*ran,(i+3.5f)*(float)ran,'#',(short)i,ran*100);
                         // FIXME: store myFirst and mySecond in the data structure
                         serList.add(myFirst);
                         serList.add(mySecond);
@@ -85,5 +96,5 @@ public class CheckPointingHelper {
             }
             
             
-    }
+    }   
 }

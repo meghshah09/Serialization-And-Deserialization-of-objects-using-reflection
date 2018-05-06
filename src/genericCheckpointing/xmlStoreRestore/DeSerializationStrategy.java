@@ -25,6 +25,9 @@ public class DeSerializationStrategy implements StrategyI{
 
     private String fileName;
     private Map<String,Class<?>> map = new HashMap<>();
+    /**
+     * Default Constructor
+     */
     public DeSerializationStrategy() {
         map.put("java.lang.String",String.class);
         map.put("int",Integer.TYPE);
@@ -36,12 +39,19 @@ public class DeSerializationStrategy implements StrategyI{
         map.put("long",Long.TYPE);
         map.put("String",String.class);
     }
-
+/**
+ * 
+ * @param sIn Is the Serializable Object 
+ */
     @Override
     public void processInput(SerializableObject sIn) {
-        
+        //Does Nothing
     }
-    
+    /**
+     * 
+     * @param fp FileProcessor Object
+     * @return the Serializable Object
+     */
     @Override
     public SerializableObject processInput(FileProcessor fp){
         SerializableObject obj = new SerializableObject();
@@ -107,7 +117,14 @@ public class DeSerializationStrategy implements StrategyI{
         
         return obj;
     }
-
+/**
+ * 
+ * @param type is the String consisting of the type
+ * @param arg is String Consisting of the Parameters
+ * @param obj1is the object
+ * @param cls is the of the type Class<?>
+ * @param fName is the Field Name.
+ */
     private void deSerializeType(String type,String arg,Object obj1,Class<?>cls,String fName) {
         Class<?>types = findType(type);
         try {
@@ -171,7 +188,11 @@ public class DeSerializationStrategy implements StrategyI{
                     ex.printStackTrace();
           }
     }
-    
+    /**
+     * 
+     * @param type is the String consisting the type of Object
+     * @return the Calss<?> of the given type
+     */
        private Class<?> findType(String type) {
            Class<?>t = map.get(type);
            return t;

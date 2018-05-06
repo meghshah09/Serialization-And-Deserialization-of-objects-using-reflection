@@ -13,6 +13,11 @@ import genericCheckpointing.util.SerializableObject;
  */
 public interface RestoreI extends StoreRestoreI{
 
+    /**
+     *
+     * @param xml
+     * @return
+     */
     public SerializableObject readObj(String xml);
     
 }

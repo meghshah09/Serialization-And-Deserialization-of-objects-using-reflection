@@ -24,10 +24,6 @@ public class FileProcessor {
     private File file;
     private int count;
 
-    public FileProcessor() {
-        
-    }
-
     /**
      * 
      * @return to get count of currently executing line

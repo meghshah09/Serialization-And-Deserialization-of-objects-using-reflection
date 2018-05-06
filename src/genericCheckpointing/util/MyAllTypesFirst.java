@@ -19,10 +19,20 @@ public class MyAllTypesFirst extends SerializableObject{
     private boolean myBoolean;
     private int myOtherInt;
     private long myOtherLong ;
-
+/**
+ * Default Constructor
+ */
     public MyAllTypesFirst() {
     }
-
+/**
+ * Parameterized Constructor
+ * @param myInt
+ * @param myLong
+ * @param myString
+ * @param myBoolean
+ * @param myOtherInt
+ * @param myOtherLong 
+ */
     public MyAllTypesFirst(int myInt, long myLong, String myString, boolean myBoolean, int myOtherInt, long myOtherLong) {
         this.myInt = myInt;
         this.myLong = myLong;
@@ -31,55 +41,94 @@ public class MyAllTypesFirst extends SerializableObject{
         this.myOtherInt = myOtherInt;
         this.myOtherLong = myOtherLong;
     }
-
+/**
+ * 
+ * @return Interger 
+ */
     public int getMyInt() {
         return myInt;
     }
-
+/**
+ * 
+ * @param myInt Contains Integer 
+ */
     public void setMyInt(int myInt) {
         this.myInt = myInt;
     }
-
+/**
+ * 
+ * @return the long 
+ */
     public long getMyLong() {
         return myLong;
     }
-
+/**
+ * 
+ * @param myLong contains Long
+ */
     public void setMyLong(long myLong) {
         this.myLong = myLong;
     }
-
+/**
+ * 
+ * @return the String 
+ */
     public String getMyString() {
         return myString;
     }
-
+/**
+ * 
+ * @param myString st=ets the String type 
+ */
     public void setMyString(String myString) {
         this.myString = myString;
     }
-
+/**
+ * 
+ * @return the Boolean parameter 
+ */
     public boolean isMyBoolean() {
         return myBoolean;
     }
-
+/**
+ * 
+ * @param myBoolean sets the Boolean Parameter 
+ */
     public void setMyBoolean(boolean myBoolean) {
         this.myBoolean = myBoolean;
     }
-
+/**
+ * 
+ * @return the OtherInt Parameter 
+ */
     public int getMyOtherInt() {
         return myOtherInt;
     }
-
+/**
+ * 
+ * @param myOtherInt set the Other Int Parameter.
+ */
     public void setMyOtherInt(int myOtherInt) {
         this.myOtherInt = myOtherInt;
     }
-
+/**
+ * 
+ * @return the OtherLong Parameter 
+ */
     public long getMyOtherLong() {
         return myOtherLong;
     }
-
+/**
+ * 
+ * @param myOtherLong sets the Other Long Parameter
+ */
     public void setMyOtherLong(long myOtherLong) {
         this.myOtherLong = myOtherLong;
     }
-
+/**
+ * 
+ * @return the HAshCode of type int
+ */
     @Override
     public int hashCode() {
         int hash = 5;
@@ -91,7 +140,11 @@ public class MyAllTypesFirst extends SerializableObject{
         hash = 71 * hash + (int) (this.myOtherLong ^ (this.myOtherLong >>> 32));
         return hash;
     }
-
+/**
+ * 
+ * @param obj the The Object as parameter
+ * @return the Boolean whether the object is equal or not
+ */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -122,7 +175,10 @@ public class MyAllTypesFirst extends SerializableObject{
 
         return true;
     }
-
+/**
+ * 
+ * @return the String of the current Object
+ */
     @Override
     public String toString(){
        String str = "MyAllTypesFirst \n{ myInt :"+this.myInt+", myString : "+this.myString+", myBoolean : "+this.myBoolean+", myLong : "+this.myLong+", myOtherLong : "+this.myOtherLong+", myOtherInt : "+this.myOtherInt+" }";

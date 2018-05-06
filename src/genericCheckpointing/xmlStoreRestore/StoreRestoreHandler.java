@@ -20,11 +20,23 @@ public class StoreRestoreHandler implements InvocationHandler{
      private StrategyI deserializationStrategy;
      private Results result;
      private FileProcessor file;
+     /**
+      * Parameterized Constructor
+      * @param rIn
+      * @param fIn 
+      */
      public StoreRestoreHandler(Results rIn,FileProcessor fIn){
          result = rIn;
          file = fIn;
      }
-    
+    /**
+     * invoke method overriden
+     * @param proxy
+     * @param method
+     * @param args
+     * @return
+     * @throws Throwable 
+     */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
           //args will contain the arguements of the interface method.
@@ -51,13 +63,22 @@ public class StoreRestoreHandler implements InvocationHandler{
     // deserialization can be done ... 
     return null;
     }
-    //does deSerialization.
+    /**
+     * does deSerialization.
+     * @param deserializationStrategy
+     * @return 
+     */
     private Object deSerializeData( StrategyI deserializationStrategy) {
         SerializableObject s=null ;
         s = deserializationStrategy.processInput(file);
         return (SerializableObject)s;
     }
-//Does serialization
+
+    /**
+     * Does serialization
+     * @param serializableObject
+     * @param serializationStrategy 
+     */
     private void serializeData(SerializableObject serializableObject, StrategyI serializationStrategy) {
        serializationStrategy.processInput(serializableObject);
       return;

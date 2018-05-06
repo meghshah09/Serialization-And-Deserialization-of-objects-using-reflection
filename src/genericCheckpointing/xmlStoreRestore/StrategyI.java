@@ -14,7 +14,16 @@ import genericCheckpointing.util.SerializableObject;
  */
 public interface StrategyI {
     
+    /**
+     *
+     * @param sIn Consists of Serializable object needed of Serialization
+     */
     public void processInput(SerializableObject sIn);
 
+    /**
+     *
+     * @param fp
+     * @return the SerializableObject consisting the instance
+     */
     public SerializableObject processInput(FileProcessor fp);
 }
