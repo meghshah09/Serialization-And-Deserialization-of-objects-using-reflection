@@ -94,7 +94,7 @@ public class DeSerializationStrategy implements StrategyI{
                     String str[] = word[1].split("\"");
                     String s[] = str[1].split(":");
                     type = s[1];
-                    //[Ref: https://stackoverflow.com/questions/237061/using-regular-expressions-to-extract-a-value-in-java]
+                    
                     Pattern p = Pattern.compile(">(.*?)<");
                     Matcher m = p.matcher(line);
                     if(m.find()){
@@ -109,7 +109,7 @@ public class DeSerializationStrategy implements StrategyI{
                 }
                 line= fp.readLine();
         }
-        //[Ref:https://stackoverflow.com/questions/6094575/creating-an-instance-using-the-class-name-and-calling-constructor]
+        
             return (SerializableObject)obj1;
         } catch (ClassNotFoundException | ArrayIndexOutOfBoundsException |InstantiationException | IllegalAccessException | IllegalArgumentException ex) {
             ex.printStackTrace();
@@ -127,61 +127,49 @@ public class DeSerializationStrategy implements StrategyI{
  */
     private void deSerializeType(String type,String arg,Object obj1,Class<?>cls,String fName) {
         Class<?>types = findType(type);
+        String output = fName.substring(0, 1).toUpperCase() + fName.substring(1);
+         output = "set"+output;
         try {
         if(types == Integer.TYPE ||types == Integer.class){
-            
-                if(fName.equalsIgnoreCase("myInt")){
-                    Method m = cls.getMethod("setMyInt", types);
-                     
+                  //System.out.println(output);
+                    Method m = cls.getMethod(output, types);
                 m.invoke(obj1,Integer.parseInt(arg));
-               
-                }else{
-                    Method m = cls.getMethod("setMyOtherInt", types);
-                    
-                     m.invoke(obj1,Integer.parseInt(arg));
-                }
+
         }
         else if(types == Long.TYPE || types== Long.class){
-            if(fName.equalsIgnoreCase("myLong")){
-                
-                    Method m = cls.getMethod("setMyLong", types);
+
+                    Method m = cls.getMethod(output, types);
                     m.invoke(obj1,Long.parseLong(arg));
-                    //countLong++;
-            }else{
-                    Method m = cls.getMethod("setMyOtherLong", types);
-                     m.invoke(obj1,Long.parseLong(arg));
-                }
-         
+
           }
         else if(types==Double.TYPE || types == Double.class){
-            if(fName.equalsIgnoreCase("myDoubleT")){
-                Method m =cls.getMethod("setMyDoubleT", types);
+
+                Method m =cls.getMethod(output, types);
                 m.invoke(obj1,Double.parseDouble(arg));
-               // countDouble++;
-            }else{
-                Method m =cls.getMethod("setMyOtherDoubleT", types);
-                m.invoke(obj1,Double.parseDouble(arg));
-            }
-            
         }
         else  if(types == Boolean.TYPE || types == Boolean.class){
-            Method m =cls.getMethod("setMyBoolean", types);
+
+            Method m =cls.getMethod(output, types);
             m.invoke(obj1, Boolean.parseBoolean(arg));
         }
         else if(types == Float.TYPE|| types == Float.class){
-            Method m = cls.getDeclaredMethod("setMyFloatT", types);
+
+            Method m = cls.getDeclaredMethod(output, types);
             m.invoke(obj1,Float.parseFloat(arg));
         }
         else if(types == Character.TYPE || types == Character.class){
-            Method m = cls.getDeclaredMethod("setMyCharT", types);
+
+            Method m = cls.getDeclaredMethod(output, types);
             m.invoke(obj1,arg.charAt(0));
         }
         else if(types == Short.TYPE || types == Short.class){
-            Method m = cls.getDeclaredMethod("setMyShortT", types);
+
+            Method m = cls.getDeclaredMethod(output, types);
             m.invoke(obj1,Short.parseShort(arg));
         }
         else if(types == String.class  || types == Object.class){
-            Method m = cls.getDeclaredMethod("setMyString", types);
+
+            Method m = cls.getDeclaredMethod(output, types);
             m.invoke(obj1,arg);
         }
          } catch (NoSuchMethodException | SecurityException | IllegalAccessException | IllegalArgumentException | InvocationTargetException ex) {
